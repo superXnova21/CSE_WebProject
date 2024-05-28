@@ -371,7 +371,7 @@
         </div>
 
         <div class="credit">
-            created by <span>Amit</span> | all rights reserved
+            created by <span>Amit_69</span> | all rights reserved
         </div>
     </section>
 
