@@ -11,7 +11,23 @@
             <a href="#price">price</a>
             <a href="#review">review</a>
             <a href="#contact">contact</a>
-           
+            @guest
+                <a href="{{ route('login') }}">Login</a>
+            @endguest
+            @auth
+                @if (auth()->user()->type == 'admin')
+                    <a href="{{ route('home.admin') }}">
+                        {{ Auth::user()->name }}
+                    </a>
+                @else
+                    {{-- <a href="{{ route('home.user') }}">
+                    {{ Auth::user()->name }} --}}
+                    <a href="{{ route('user.profile') }}">
+                     {{Auth::user()->name}}
+
+                </a>
+                @endif
+            @endauth
 
         </nav>
 
@@ -30,7 +46,26 @@
 
         <div class="swiper-container home-slider">
             <div class="swiper-wrapper">
-                
+                @foreach ($prevs as $prev)
+                    <div class="swiper-slide">
+                        <img src="{{ asset('all_storages/' . $prev->image1) }}" alt="Image 1" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{{ asset('all_storages/' . $prev->image2) }}" alt="Image 1" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{{ asset('all_storages/' . $prev->image3) }}" alt="Image 1" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{{ asset('all_storages/' . $prev->image4) }}" alt="Image 1" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{{ asset('all_storages/' . $prev->image5) }}" alt="Image 1" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{{ asset('all_storages/' . $prev->image6) }}" alt="Image 1" />
+                    </div>
+                @endforeach
 
 
 
@@ -44,7 +79,15 @@
 
         <div class="box-container">
 
-           
+            @foreach ($services as $service)
+                <div class="box">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                    <h3>{{ $service->title }}</h3>
+                    <p>
+                        {{ $service->description }}
+                    </p>
+                </div>
+            @endforeach
 
 
         </div>
@@ -55,7 +98,21 @@
         <h1 class="heading"><span>about</span> us</h1>
 
         <div class="row">
-            
+            @foreach ($abouts as $about)
+                <div class="image">
+                    <img src="{{ asset('all_storages/' . $about->image) }}" alt="Image 1" />
+                </div>
+
+                <div class="content">
+                    <h3>{{ $about->title }}</h3>
+                    <p>
+                        {{ $about->description }}
+                    </p>
+
+                    <a href="#contact" class="btn">reach us</a>
+                </div>
+            @endforeach
+
 
         </div>
     </section>
@@ -66,7 +123,62 @@
 
         <div class="box-container">
 
-            
+            @foreach ($prevs as $prev)
+                <div class="box">
+                    <img src="{{ asset('all_storages/' . $prev->image1) }}" alt="Image 1" />
+                    <h3 class="title">best events</h3>
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="{{ asset('all_storages/' . $prev->image2) }}" alt="Image 1" />
+                    <h3 class="title">best events</h3>
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="{{ asset('all_storages/' . $prev->image3) }}" alt="Image 1" />
+                    <h3 class="title">best events</h3>
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="{{ asset('all_storages/' . $prev->image4) }}" alt="Image 1" />
+                    <h3 class="title">best events</h3>
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="{{ asset('all_storages/' . $prev->image5) }}" alt="Image 1" />
+                    <h3 class="title">best events</h3>
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                    </div>
+                </div>
+                <div class="box">
+                    <img src="{{ asset('all_storages/' . $prev->image6) }}" alt="Image 1" />
+                    <h3 class="title">best events</h3>
+                    <div class="icons">
+                        <a href="#" class="fas fa-heart"></a>
+                        <a href="#" class="fas fa-share"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                    </div>
+                </div>
+            @endforeach
 
 
         </div>
@@ -78,7 +190,19 @@
 
         <div class="box-container">
 
-            
+            @foreach ($pricings as $pricing)
+                <div class="box">
+                    <h3 class="title">{{ $pricing->title }}</h3>
+                    <h3 class="amount">${{ $pricing->price }}</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i>{{ $pricing->job1 }}</li>
+                        <li><i class="fas fa-check"></i> {{ $pricing->job2 }}</li>
+                        <li><i class="fas fa-check"></i> {{ $pricing->job3 }}</li>
+                        <li><i class="fas fa-check"></i> {{ $pricing->job4 }}</li>
+                    </ul>
+                    <a href="{{route('checkout')}}" class="btn">check out</a>
+                </div>
+            @endforeach
 
 
 
