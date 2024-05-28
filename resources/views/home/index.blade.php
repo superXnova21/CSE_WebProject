@@ -95,7 +95,7 @@
                 <div class="swiper-slide box">
                     <i class="fas fa-quote-right"></i>
                     <div class="user">
-                        <img src="#" alt="" />
+                        <img src="{{asset('assets/img1.jpg')}}" alt="" />
                         <div class="user-info">
                             <h3>nayana</h3>
                             <span>happy customer</span>
@@ -112,7 +112,7 @@
                 <div class="swiper-slide box">
                     <i class="fas fa-quote-right"></i>
                     <div class="user">
-                        <img src="#" alt="" />
+                        <img src="{{asset('assets/img1.jpg')}}" alt="" />
                         <div class="user-info">
                             <h3>nayana</h3>
                             <span>happy customer</span>
@@ -129,7 +129,7 @@
                 <div class="swiper-slide box">
                     <i class="fas fa-quote-right"></i>
                     <div class="user">
-                        <img src="#" alt="" />
+                        <img src="{{asset('assets/img1.jpg')}}" alt="" />
                         <div class="user-info">
                             <h3>nayana</h3>
                             <span>happy customer</span>
@@ -146,7 +146,7 @@
                 <div class="swiper-slide box">
                     <i class="fas fa-quote-right"></i>
                     <div class="user">
-                        <img src="#" alt="" />
+                        <img src="{{asset('assets/img1.jpg')}}" alt="" />
                         <div class="user-info">
                             <h3>nayana</h3>
                             <span>happy customer</span>
@@ -163,7 +163,7 @@
                 <div class="swiper-slide box">
                     <i class="fas fa-quote-right"></i>
                     <div class="user">
-                        <img src="#" alt="" />
+                        <img src="{{asset('assets/img1.jpg')}}" alt="" />
                         <div class="user-info">
                             <h3>nayana</h3>
                             <span>happy customer</span>
