@@ -168,4 +168,176 @@ class HomePageController extends Controller
 
         return redirect()->route('home.admin')->with('success', 'Service deleted successfully');
     }
+    public function aboutUs()
+    {
+        return view('about.create');
+    }
+    public function storeAbout(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'required|mimes:png,jpg,jpeg|max:10000',
+        ]);
+
+        $image = $request->file('image');
+        $imageName = time() . '_imageAU.' . $image->extension();
+        $image->move(public_path('all_storages'), $imageName);
+
+        $about = new About();
+        $about->title = $request->title;
+        $about->description = $request->description;
+        $about->image = $imageName;
+        $about->save();
+
+        return redirect()->route('home.admin')->with('success', 'About us added successfully');
+    }
+    public function editAbout($id)
+    {
+        $about = About::find($id);
+        return view('about.update', compact('about'));
+    }
+    public function updateAbout(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'nullable|mimes:png,jpg,jpeg|max:10000',
+        ]);
+
+        $about = About::find($id);
+        if (!$about) {
+            return redirect()->route('home.admin')->with('error', 'About us not found');
+        }
+
+        $about->title = $request->title;
+        $about->description = $request->description;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_imageAU.' . $image->extension();
+            $image->move(public_path('all_storages'), $imageName);
+            $about->image = $imageName;
+        }
+        $about->save();
+
+        return redirect()->route('home.admin')->with('success', 'About us updated successfully');
+    }
+    public function destroyAbout($id)
+    {
+        $about = About::find($id);
+
+        if (!$about) {
+            return redirect()->route('home.admin')->with('error', 'About us not found');
+        }
+
+        $imagePath = public_path('all_storages/' . $about->image);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+
+        $about->delete();
+
+        return redirect()->route('home.admin')->with('success', 'About us deleted successfully');
+    }
+    public function pricing()
+    {
+        return view('pricing.create');
+    }
+    public function storePricing(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'price' => 'required',
+            'job1' => 'required',
+            'job2' => 'required',
+            'job3' => 'required',
+            'job4' => 'required',
+        ]);
+
+        $pricing = new Pricing();
+        $pricing->title = $request->title;
+        $pricing->price = $request->price;
+        $pricing->job1 = $request->job1;
+        $pricing->job2 = $request->job2;
+        $pricing->job3 = $request->job3;
+        $pricing->job4 = $request->job4;
+        $pricing->save();
+
+        return redirect()->route('home.admin')->with('success', 'Pricing added successfully');
+    }
+    public function editPricing($id)
+    {
+        $pricing = Pricing::find($id);
+        return view('pricing.update', compact('pricing'));
+    }
+    public function updatePricing(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required',
+            'price' => 'required',
+            'job1' => 'required',
+            'job2' => 'required',
+            'job3' => 'required',
+            'job4' => 'required',
+        ]);
+
+        $pricing = Pricing::find($id);
+        if (!$pricing) {
+            return redirect()->route('home.admin')->with('error', 'Pricing not found');
+        }
+
+        $pricing->title = $request->title;
+        $pricing->price = $request->price;
+        $pricing->job1 = $request->job1;
+        $pricing->job2 = $request->job2;
+        $pricing->job3 = $request->job3;
+        $pricing->job4 = $request->job4;
+        $pricing->save();
+
+        return redirect()->route('home.admin')->with('success', 'Pricing updated successfully');
+    }
+    public function destroyPricing($id)
+    {
+        $pricing = Pricing::find($id);
+
+        if (!$pricing) {
+            return redirect()->route('home.admin')->with('error', 'Pricing not found');
+        }
+
+        $pricing->delete();
+
+        return redirect()->route('home.admin')->with('success', 'Pricing deleted successfully');
+    }
+    public function storeMessage(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'number' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+        $message = new Message();
+        $message->name = $request->name;
+        $message->email = $request->email;
+        $message->number = $request->number;
+        $message->subject = $request->subject;
+        $message->message = $request->message;
+        $message->save();
+
+        return redirect()->route('home.index')->with('success', 'Message sent successfully');
+    }
+    public function destroyMessage($id)
+    {
+        $message = Message::find($id);
+
+        if (!$message) {
+            return redirect()->route('home.admin')->with('error', 'Message not found');
+        }
+
+        $message->delete();
+
+        return redirect()->route('home.admin')->with('success', 'Message deleted successfully');
+    }
 }
