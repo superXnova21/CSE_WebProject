@@ -206,7 +206,145 @@
                 </div>
             </div>
 
-            
+            <div class="table-data">
+                <div id="about" class="order">
+                    <div class="head">
+                        <h3>About Us</h3>
+                        <a href="{{ route('about.create') }}">
+                            <div tabindex="0" class="plusButton">
+                                <svg class="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                    <g mask="url(#mask0_21_345)">
+                                        <path
+                                            d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr class="gap">
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Descriptions</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($abouts as $about)
+                                <tr class="gap">
+                                    <td>
+                                        <img src="{{ asset('all_storages/' . $about->image) }}" alt="Image" />
+                                    </td>
+                                    <td>
+                                        <p>{{ $about->title }}</p>
+                                    </td>
+                                    
+                                    <td>
+                                        <p>{{ $about->description }}</p>
+                                    </td>
+                                    <td>
+                                        <button>
+                                            <a class="no-design"
+                                                href="/admin/about-us/edit/{{$about->id}}"><span>Update</span></a>
+                                        </button>
+                                        <form action="/admin/about-us/{{$about->id}}" method="POST"
+                                            style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                onclick="return confirm('Are you sure you want to delete this event?');">
+                                                <span>Delete</span>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="table-data">
+                <div id="pricing" class="order">
+                    <div class="head">
+                        <h3>Pricing</h3>
+                        <a href="{{ route('pricing.create') }}">
+                            <div tabindex="0" class="plusButton">
+                                <svg class="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                    <g mask="url(#mask0_21_345)">
+                                        <path
+                                            d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr class="gap2">
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Job 1</th>
+                                <th>Job 2</th>
+                                <th>Job 3</th>
+                                <th>Job 4</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($pricings as $pricing)
+                                <tr class="gap2">
+                                    <td>
+                                        <p>{{ $pricing->title }}</p>
+                                    </td>
+                                    
+                                    <td>
+                                        <p>{{ $pricing->price }}$</p>
+                                    </td>
+                                    <td>
+                                        <p>{{ $pricing->job1 }}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{ $pricing->job2 }}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{ $pricing->job3 }}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{ $pricing->job4 }}</p>
+                                    </td>
+                                    <td>
+                                        <button>
+                                            <a class="no-design"
+                                                href="/admin/pricing/edit/{{$pricing->id}}"><span>Update</span></a>
+                                        </button>
+                                        <form action="/admin/pricing/{{$pricing->id}}" method="POST"
+                                            style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                onclick="return confirm('Are you sure you want to delete this event?');">
+                                                <span>Delete</span>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
 
             <div class="table-data">
                 <div id="message" class="order">
