@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\SslCommerzPaymentController;
 
 
 
@@ -26,7 +27,34 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/logout', 'logout')->middleware('auth')->name('auth.logout-action');
 });
 
+// Normal Users Routes List
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+    // // SSLCOMMERZ Start
+    // Route::get('/user-profile', [SslCommerzPaymentController::class, 'userprofile'])->name('user.profile');
+    // Route::get('/user-profile-data', [SslCommerzPaymentController::class, 'userprofiledata'])->name('userprofile.data');
 
+    Route::get('/user-profile', [SslCommerzPaymentController::class, 'userprofiledata'])->name('user.profile');
+    Route::get('/user-profile-data', [SslCommerzPaymentController::class, 'userprofiledata'])->name('userprofile.data');
+
+
+
+    Route::post('/profile/update', [SslCommerzPaymentController::class, 'updateUserProfile'])->name('profile.update');
+
+
+
+    Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('home.user');
+    Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout'])->name('checkout');
+
+    Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+    Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+    Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+    Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+    Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+    Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+
+});
 
 // Admin Routes List
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
