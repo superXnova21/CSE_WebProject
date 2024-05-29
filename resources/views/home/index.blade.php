@@ -184,11 +184,6 @@
         </div>
     </section>
 
-    <div id="modal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="fullImage">
-    </div>
-
     <!-- price section starts  -->
     <section class="price" id="price">
         <h1 class="heading">our <span>pricing</span></h1>
@@ -198,14 +193,14 @@
             @foreach ($pricings as $pricing)
                 <div class="box">
                     <h3 class="title">{{ $pricing->title }}</h3>
-                    <h3 class="amount">${{ $pricing->price }}</h3>
+                    <h3 class="amount">{{ $pricing->price }} tk</h3>
                     <ul>
                         <li><i class="fas fa-check"></i>{{ $pricing->job1 }}</li>
                         <li><i class="fas fa-check"></i> {{ $pricing->job2 }}</li>
                         <li><i class="fas fa-check"></i> {{ $pricing->job3 }}</li>
                         <li><i class="fas fa-check"></i> {{ $pricing->job4 }}</li>
                     </ul>
-                    <a href="{{route('checkout')}}" class="btn">check out</a>
+                    <a href="{{route('checkout', $pricing->id)}}" class="btn">check out</a>
                 </div>
             @endforeach
 
@@ -311,7 +306,7 @@
     </section>
 
     <!-- contact section starts  -->
-    
+    @guest
     <section class="contact" id="contact">
         <h1 class="heading"><span>contact</span> us</h1>
 
@@ -329,7 +324,7 @@
             <input type="submit" value="send message" class="btn" />
         </form>
     </section>
-    
+    @endguest
     
 
     <!-- footer section starts  -->
@@ -337,54 +332,54 @@
         <div class="box-container">
             <div class="box">
                 <h3>branches</h3>
-                <a href="#"> <i class="fas fa-map-marker-alt"></i> Khulna </a>
-                <a href="#"> <i class="fas fa-map-marker-alt"></i> Dhaka </a>
-                <a href="#"> <i class="fas fa-map-marker-alt"></i> Sylhet </a>
+                <a href="#"> <i class="fas fa-map-marker-alt"></i> bangalore </a>
+                <a href="#"> <i class="fas fa-map-marker-alt"></i> hyderabad </a>
+                <a href="#"> <i class="fas fa-map-marker-alt"></i> delhi </a>
+                <a href="#"> <i class="fas fa-map-marker-alt"></i> kolkata </a>
+                <a href="#"> <i class="fas fa-map-marker-alt"></i> chennai </a>
             </div>
 
             <div class="box">
                 <h3>quick links</h3>
-                <a href="#home"> <i class="fas fa-arrow-right"></i> home </a>
-                <a href="#service"> <i class="fas fa-arrow-right"></i> service </a>
-                <a href="#about"> <i class="fas fa-arrow-right"></i> about </a>
-                <a href="#gallery"> <i class="fas fa-arrow-right"></i> gallery </a>
-                <a href="#price"> <i class="fas fa-arrow-right"></i> price </a>
-                <a href="#review"> <i class="fas fa-arrow-right"></i> reivew </a>
-                <a href="#contact"> <i class="fas fa-arrow-right"></i> contact </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> home </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> service </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> about </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> gallery </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> price </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> reivew </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> contact </a>
             </div>
 
             <div class="box">
                 <h3>contact info</h3>
-                <a href="#"> <i class="fas fa-phone"></i> +880-199-868-4891 </a>
-                <a href="#"> <i class="fas fa-phone"></i> +880-189-390-1142 </a>
-                <a href="#"> <i class="fas fa-envelope"></i> amit@gmail.com </a>
-                <a href="#"> <i class="fas fa-envelope"></i> Supernova@gmail.com </a>
+                <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+                <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+                <a href="#"> <i class="fas fa-envelope"></i> kanasu@gmail.com </a>
+                <a href="#"> <i class="fas fa-envelope"></i> kanasuind@gmail.com </a>
                 <a href="#">
-                    <i class="fas fa-map-marker-alt"></i> KUET, Khulna, Bangladesh
+                    <i class="fas fa-map-marker-alt"></i> bangalore, india - 560054
                 </a>
             </div>
 
             <div class="box">
                 <h3>follow us</h3>
-                <a href="https://www.facebook.com/amit21518/"> <i class="fab fa-facebook-f"></i> facebook </a>
+                <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
                 <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
-                <a href="https://www.instagram.com/"> <i class="fab fa-instagram"></i> instagram </a>
+                <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
                 <a href="#"> <i class="fab fa-linkedin-in"></i> linkedin </a>
             </div>
+        </div>
 
-            <!-- "Back to top" button -->
-            <div class="box" style="position: fixed; bottom: 20px; right: 20px;">
-                <button onclick="topFunction()" title="Go to top" style="display: inline-block; background-color: #555; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-                    <i class="fas fa-arrow-up"></i>
-                </button>
-            </div>
+        <div class="box" style="position: fixed; bottom: 20px; right: 20px;">
+            <button onclick="topFunction()" title="Go to top" style="display: inline-block; background-color: #555; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                <i class="fas fa-arrow-up"></i>
+            </button>
         </div>
 
         <div class="credit">
-            created by <span>Amit</span> | all rights reserved
+            created by <span>Amit_69</span> | all rights reserved
         </div>
     </section>
-
 
     <!-- theme toggler  -->
     <div class="theme-toggler">
