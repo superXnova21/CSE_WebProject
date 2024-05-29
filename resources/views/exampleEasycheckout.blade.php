@@ -31,10 +31,7 @@
 <body class="bg-light">
 <div class="container">
     <div class="py-5 text-center">
-        <h2>EasyCheckout (Popup) - SSLCommerz</h2>
-
-        <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. We have provided this
-            sample form for understanding EasyCheckout (Popup) Payment integration with SSLCommerz.</p>
+        <h2>FestivityFlair Billing</h2>
     </div>
 
     <div class="row">
@@ -49,21 +46,21 @@
                         <h6 class="my-0">Product name</h6>
                         <small class="text-muted">Brief description</small>
                     </div>
-                    <span class="text-muted">1000</span>
+                    <span class="text-muted"></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
                         <h6 class="my-0">Second product</h6>
                         <small class="text-muted">Brief description</small>
                     </div>
-                    <span class="text-muted">50</span>
+                    <span class="text-muted"></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
                         <h6 class="my-0">Third item</h6>
                         <small class="text-muted">Brief description</small>
                     </div>
-                    <span class="text-muted">150</span>
+                    <span class="text-muted"></span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (BDT)</span>
@@ -77,8 +74,8 @@
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <label for="firstName">Full name</label>
-                        <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder=""
-                               value="John Doe" required>
+                        <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder="Full Name"
+                               value="" required>
                         <div class="invalid-feedback">
                             Valid customer name is required.
                         </div>
@@ -92,7 +89,7 @@
                             <span class="input-group-text">+88</span>
                         </div>
                         <input type="text" name="customer_mobile" class="form-control" id="mobile" placeholder="Mobile"
-                               value="01711xxxxxx" required>
+                               value="" required>
                         <div class="invalid-feedback" style="width: 100%;">
                             Your Mobile number is required.
                         </div>
@@ -102,7 +99,7 @@
                 <div class="mb-3">
                     <label for="email">Email <span class="text-muted">(Optional)</span></label>
                     <input type="email" name="customer_email" class="form-control" id="email"
-                           placeholder="you@example.com" value="you@example.com" required>
+                           placeholder="E-mail" value="" required>
                     <div class="invalid-feedback">
                         Please enter a valid email address for shipping updates.
                     </div>
@@ -110,8 +107,8 @@
 
                 <div class="mb-3">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Main St"
-                           value="93 B, New Eskaton Road" required>
+                    <input type="text" class="form-control" id="address" placeholder="Address"
+                           value="" required>
                     <div class="invalid-feedback">
                         Please enter your shipping address.
                     </div>
@@ -119,7 +116,7 @@
 
                 <div class="mb-3">
                     <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    <input type="text" class="form-control" id="address2" placeholder="Additional address">
                 </div>
 
                 <div class="row">
