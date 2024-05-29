@@ -88,7 +88,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">+88</span>
                         </div>
-                        <input type="text" name="customer_mobile" class="form-control" id="mobile" placeholder="Mobile"
+                        <input type="tel" name="customer_mobile" class="form-control" id="mobile" placeholder="Mobile"
                                value="" required>
                         <div class="invalid-feedback" style="width: 100%;">
                             Your Mobile number is required.

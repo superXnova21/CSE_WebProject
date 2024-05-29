@@ -588,3 +588,50 @@ html::-webkit-scrollbar-thumb {
     width: 100%;
   }
 }
+
+/* CSS code */
+
+
+
+/* Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
+}
+
+/* Modal content */
+.modal-content {
+  position: relative;
+  margin: auto;
+  width: 60%; /* Adjusted width */
+  max-width: 600px; /* Maximum width */
+  height: auto; /* Adjusted height */
+  max-height: 80%; /* Maximum height */
+  background-color: transparent; /* Transparent background */
+  display: flex; /* Flex display for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000; /* Ensure the close button is above the backdrop */
+}
+
+
+
+

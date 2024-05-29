@@ -68,3 +68,37 @@ var swiper = new Swiper(".review-slider", {
     disableOnInteraction: false,
   },
 });
+
+// Get all the images
+let images = document.querySelectorAll(".box img");
+let modal = document.getElementById("modal");
+let fullImg = document.getElementById("fullImage");
+
+// Loop through each image and attach a click event
+images.forEach((image) => {
+  image.addEventListener("click", () => {
+    modal.style.display = "block"; // Display the modal
+
+    // Set the full-size image source
+    fullImg.src = image.src;
+  });
+});
+
+// Close the modal when the close button is clicked
+document.querySelector(".close").addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Close the modal when clicking outside the modal content
+window.addEventListener("click", (e) => {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+});
+
+function topFunction() {
+  // For modern browsers
+  document.documentElement.scrollTop = 0;
+  // For IE and Safari
+  document.body.scrollTop = 0;
+}
