@@ -31,7 +31,7 @@
 <body class="bg-light">
 <div class="container">
     <div class="py-5 text-center">
-        <h2>FestivityFlair Billing</h2>
+        <h2>Hosted Payment - SSLCommerz</h2>
     </div>
 
     <div class="row">
@@ -43,28 +43,14 @@
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <h6 class="my-0">Product name</h6>
-                        <small class="text-muted">Brief description</small>
+                        <h6 class="my-0">{{$item->title}}</h6>
+                        <small class="text-muted">{{$item->job1}}</small>
                     </div>
-                    <span class="text-muted">1000</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Second product</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">50</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Third item</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">150</span>
+                    <span class="text-muted">{{$item->price}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (BDT)</span>
-                    <strong>1200 TK</strong>
+                    <strong>{{$item->price}}</strong>
                 </li>
             </ul>
         </div>
@@ -75,8 +61,8 @@
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <label for="firstName">Full name</label>
-                        <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder="Name"
-                               value="" required>
+                        <input type="text" name="customer_name" class="form-control" id="customer_name" placeholder=""
+                               value="{{auth()->user()->name}}" required>
                         <div class="invalid-feedback">
                             Valid customer name is required.
                         </div>
@@ -89,18 +75,18 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">+88</span>
                         </div>
-                        <input type="tel" name="customer_mobile" class="form-control" id="mobile" placeholder="Mobile"
-                               value="" required>
+                        <input type="text" name="customer_mobile" class="form-control" name="phone" placeholder="Mobile"
+                               required>
                         <div class="invalid-feedback" style="width: 100%;">
                             Your Mobile number is required.
                         </div>
                     </div>
                 </div>
-
+                <input type="hidden" value="{{$item->id}}" name="item_id" required/>
                 <div class="mb-3">
                     <label for="email">Email <span class="text-muted">(Optional)</span></label>
                     <input type="email" name="customer_email" class="form-control" id="email"
-                           placeholder="E-mail" value="" required>
+                           placeholder="you@example.com" value="{{auth()->user()->email}}" required>
                     <div class="invalid-feedback">
                         Please enter a valid email address for shipping updates.
                     </div>
@@ -108,8 +94,8 @@
 
                 <div class="mb-3">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="Address"
-                           value="" required>
+                    <input type="text" class="form-control" name="address"
+                           required>
                     <div class="invalid-feedback">
                         Please enter your shipping address.
                     </div>
@@ -117,7 +103,7 @@
 
                 <div class="mb-3">
                     <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="Additional Address">
+                    <input type="text" class="form-control" id="address2" placeholder="">
                 </div>
 
                 <div class="row">

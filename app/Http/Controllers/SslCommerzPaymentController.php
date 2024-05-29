@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB as FacadesDB;
 use App\Library\SslCommerz\SslCommerzNotification;
+use App\Models\Pricing;
 use App\Models\User;  // Adjust the namespace if your User model is in a different location
 
 
@@ -22,9 +23,10 @@ class SslCommerzPaymentController extends Controller
 
 
 
-    public function exampleHostedCheckout()
+    public function exampleHostedCheckout($id)
     {
-        return view('exampleHosted');
+        $item = Pricing::find($id);
+        return view('exampleHosted', compact('item'));
     }
 
     public function index(Request $request)
@@ -41,7 +43,7 @@ class SslCommerzPaymentController extends Controller
         # CUSTOMER INFORMATION
         $post_data['cus_name'] = 'Customer Name';
         $post_data['cus_email'] = 'customer@mail.com';
-        $post_data['cus_add1'] = 'Customer Address';
+        $post_data['cus_add1'] = $request->address;
         $post_data['cus_add2'] = "";
         $post_data['cus_city'] = "";
         $post_data['cus_state'] = "";
@@ -70,17 +72,17 @@ class SslCommerzPaymentController extends Controller
         $post_data['value_b'] = "ref002";
         $post_data['value_c'] = "ref003";
         $post_data['value_d'] = "ref004";
-
+        $item = Pricing::find($request->item_id);
         #Before  going to initiate the payment order status need to insert or update as Pending.
         $update_product = DB::table('orders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
-                'name' => $post_data['cus_name'],
-                'email' => $post_data['cus_email'],
-                'phone' => $post_data['cus_phone'],
-                'amount' => $post_data['total_amount'],
+                'name' => auth()->user()->name,
+                'email' => auth()->user()->email,
+                'phone' => $request->phone,
+                'amount' => $item->price,
                 'status' => 'Pending',
-                'address' => $post_data['cus_add1'],
+                'address' => $request->address,
                 'transaction_id' => $post_data['tran_id'],
                 'currency' => $post_data['currency']
             ]);
@@ -141,15 +143,15 @@ class SslCommerzPaymentController extends Controller
         $post_data['value_c'] = "ref003";
         $post_data['value_d'] = "ref004";
 
-
+        $item = Pricing::find($request->item_id);
         #Before  going to initiate the payment order status need to update as Pending.
         $update_product = DB::table('orders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
-                'name' => $post_data['cus_name'],
-                'email' => $post_data['cus_email'],
-                'phone' => $post_data['cus_phone'],
-                'amount' => $post_data['total_amount'],
+                'name' => auth()->user()->name,
+                'email' => auth()->user()->email,
+                'phone' => $request->phone,
+                'amount' => $item->price,
                 'status' => 'Pending',
                 'address' => $post_data['cus_add1'],
                 'transaction_id' => $post_data['tran_id'],
@@ -196,7 +198,7 @@ class SslCommerzPaymentController extends Controller
                     ->update(['status' => 'Processing']);
 
                 echo "<br >Transaction is successfully Completed";
-                return redirect('/user-profile')->with('success', 'Transaction is successfully Completed');
+                return redirect()->route('home.index')->with('success', 'Transaction is successfully Completed');
             }
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
             /*

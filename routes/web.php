@@ -43,7 +43,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 
 
     Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout'])->name('home.user');
-    Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout'])->name('checkout');
+    Route::get('/example2/{id}', [SslCommerzPaymentController::class, 'exampleHostedCheckout'])->name('checkout');
 
     Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
     Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);

@@ -62,7 +62,7 @@ class AuthController extends Controller
             return redirect()->route('home.admin');
         } else {
             // return redirect()->route('home.user');
-            return redirect()->route('user.profile');
+            return redirect()->route('home.index');
         }
     }
 
